@@ -1,0 +1,13 @@
+<div class="container">
+      <h2>Lägg till nyheter:</h2>
+      <p>Nyheter att posta i nyhetsflödet</p>
+      <form role="form" action="api/inputformnews" method="POST">
+        <div class="form-group">
+          <label for="comment">Rubrik:</label>
+          <textarea class="form-control" rows="1" id="heading" name="heading"></textarea><br>
+          <label for="mainText">Text:</label>
+          <textarea class="form-control" rows="10" id="text" name="text"></textarea><br>
+          <input type="submit" class="btn btn-info" role="button" />
+        </div>
+      </form>
+</div>

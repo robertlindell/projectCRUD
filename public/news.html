@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>projectCRUD</title>
+	<link href="styles/style.css" rel="stylesheet" type="text/css"/>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  	
+	
+</head>
+
+<body ng-app="app">
+
+	<div ng-controller="myApp">
+	  
+		<menu></menu> 
+		
+		<div class="row">	
+			
+			<div class="col-md-4">
+				<ul ng-repeat="output in output | filter:searchText track by $index">
+					<div ng-click="getNewsById(output._id)">
+						<h3>{{output.heading}}</h3>
+					</div>
+					<button class="btn btn-danger" ng-click="remove(output._id)">Ta Bort</button>
+					<button class="btn btn-warning" ng-click="showForm(output._id)">Ändra</button>
+				</ul>
+			</div>
+						
+			<div class="container col-md-4" ng-show="showMe">
+		      <form role="form" action="api/changeformnews/" method="POST">
+		        <div class="form-group">
+		          <label for="comment">Ändra rubrik:</label>
+		          <textarea class="form-control" rows="1" id="heading" name="heading">{{idOutput.heading}}</textarea><br>
+		          <label for="mainText">Ändra text:</label>
+		          <textarea class="form-control" rows="10" id="text" name="text">{{idOutput.text}}</textarea><br>
+		          <input type="hidden" value="{{idOutput._id}}" name="id"></input>
+		          <input type="submit" class="btn btn-info" role="button" />
+		        </div>
+		      </form>
+			</div>
+			
+			<div class="col-md-4">
+				<div>
+				  <h1>{{ newsObj[0].heading }}</h1>
+				  <p>{{ newsObj[0].text }}</p>
+				</div>
+			</div>
+
+			<div class="col-md-4" "text-center">
+				<div id="workSearch" class="text-center">
+					<input type="text" ng-model="searchText" placeholder="Sök...">
+				</div>	
+			</div>					
+		
+		</div>	
+	</div>
+
+
+	<script src="../app/angular.min.js"></script>
+	<script src="../app/app.js"></script>
+	<script src="../app/scripts/controllers/controller.js"></script>
+    <script src="../app/scripts/directives/directive.js"></script>
+
+	
+</body>
+
+</html>
+
+

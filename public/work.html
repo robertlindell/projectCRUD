@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>projectCRUD</title>
+	<link href="styles/style.css" rel="stylesheet" type="text/css"/>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	
+
+</head>
+
+<body ng-app="app">
+
+	<div ng-controller="myApp">
+	  
+		<menu></menu> 
+
+		<div class="row">
+
+			<div id="workSearch" class="col-md-4">
+				<input type="text" ng-model="searchText" placeholder="Sök...">
+			</div>
+
+			<div class="col-md-4">
+				<ul ng-repeat="workOut in workOut | filter:searchText">
+					<div ng-click="getWorkById(workOut._id)">
+						<h2>{{ workOut.heading }}</h2><br>
+						<h3>Kompetenser: {{ workOut.keyWords }}</h3><br>
+					</div>
+				</ul>
+			</div>
+
+			<div class="col-md-4">				
+				<h1>{{ workObj[0].heading }}</h1>
+				<p>{{ workObj[0].keyWords }}</p>
+				<p>{{ workObj[0].text }}</p>					
+			</div>
+			
+		</div>
+	</div>	
+
+
+	<script src="../app/app.js"></script>
+	<script src="../app/scripts/controllers/controller.js"></script>
+    <script src="../app/scripts/directives/directive.js"></script>
+
+
+	
+</body>
+
+</html>

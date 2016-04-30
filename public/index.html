@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>projectCRUD</title>
+	<link href="styles/style.css" rel="stylesheet" type="text/css"/>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	
+</head>
+
+<body ng-app="app">
+	
+	<div ng-controller="myApp">
+		<menu></menu> 
+	
+
+		<div class="row">	
+				
+			<div class="col-md-3" id="nytt">
+				<h1>Nyheter</h1>
+				<div>
+					<ul ng-repeat="output in output track by $index">
+					<div ng-click="getNewsById(output._id)">
+					<h2>{{output.heading}}</h2>
+					</div>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div>
+				  <h3>{{ newsObj[0].heading }}</h1>
+				  <p>{{ newsObj[0].text }}</p>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<h1>Jobb</h1>
+
+				<div>
+					<ul ng-repeat="workOut in workOut track by $index">
+						<div ng-click="getWorkById(workOut._id)">
+						
+						<h2>{{ workOut.heading }}</h2>
+						
+						</div>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div>
+				  <h3>{{ workObj[0].heading }}</h1>
+				  <p>{{ workObj[0].keyWords }}</p>
+				  <p>{{ workObj[0].text }}</p>
+				</div>
+			</div>
+
+		</div> 
+	</div>
+		<script src="../app/angular.min.js"></script>
+		<script src="../app/app.js"></script>
+		<script src="../app/scripts/controllers/controller.js"></script>
+    	<script src="../app/scripts/directives/directive.js"></script>
+</body>
+
+</html>
+
+
