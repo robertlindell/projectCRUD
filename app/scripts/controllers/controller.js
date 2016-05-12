@@ -1,3 +1,21 @@
+projectCRUD.controller("aggregateController", function($http, $scope){
+
+	$scope.aggOutput = null;
+
+		$http({
+
+			method: "GET",
+			url: "/api/aggregate"
+
+		}).then(function successCallback(response) {
+			$scope.aggOutput = response.data;
+		}, function errorCallback(response) {
+			console.log(response);
+		});
+});
+
+
+
 projectCRUD.controller("myApp", function($http, $scope) {
 
 $scope.showMe = false;
@@ -35,6 +53,8 @@ var refresh = function() {
 
 refresh();
 
+
+
 	$scope.output = null;
 
 		$http({
@@ -65,6 +85,8 @@ refresh();
 
 			});
 		}	
+
+
 
 
 	$scope.workOut = null;
@@ -99,68 +121,15 @@ refresh();
 		}
 
 
-/*
-	$scope.deleteFoo = function(i) {
 
-		var urlId = $scope.output[i]._id;
-
-		$scope.output[i].show = false;
-
-		$http({
-
-			method: "delete",
-			url: 'api/person/' + urlId
-		}).then(function successCallback(response) {
-		}, function errorCallback(response) {
-
-		});
-	}
-*/
-
-
-
-	$scope.remove = function(id) {
-			//console.log(id);
-		//var Id = $scope.output[i]._id;
-		
-		//$scope.output[i].show = false;
-		
-		$http.delete('/api/news/' + id)
-			.success(function(response) {
+		$scope.remove = function(id) {
 				
-		});
-    	refresh();
-	}
-
-/*
-	$scope.edit = function(id) {
-		console.log(id);
-		$http.get('/news/' + id).success(function(response) {
-			$scope.news = response;
-		});
-	}
-
-*/
-
-
-
-
-
-
-/*
-
-	$scope.updateItem = function(i) {
-
-		$scope.output[i].showTextField = false;
-
-		var obj = $scope.output[i];
-
-		var urlId = '/api/news/' + $scope.output[i]._id;
-
-		$http.put(urlId, obj);
-		
-	}
-*/		
+			$http.delete('/api/news/' + id)
+				.success(function(response) {
+					
+			});
+	    	refresh();
+		}	
 
 });
 

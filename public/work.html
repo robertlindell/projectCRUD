@@ -41,7 +41,16 @@
 			</div>
 			
 		</div>
-	</div>	
+	</div>
+	<div ng-controller="aggregateController">
+		
+	<h1>Vilka kompetenser efterfrågas:</h1>	
+	<h2>{{aggOutput[0]._id}}:{{aggOutput[0].Antal}}</h2>
+	<h2>{{aggOutput[1]._id}}:{{aggOutput[1].Antal}}</h2>
+	<h2>{{aggOutput[2]._id}}:{{aggOutput[2].Antal}}</h2>
+	<h2>{{aggOutput[5]._id}}:{{aggOutput[5].Antal}}</h2>
+
+	</div>
 
 
 	<script src="../app/app.js"></script>

@@ -6,8 +6,6 @@ var Work = require('../models/workmodel');
 var parser = require('body-parser');
 var router = express.Router();
 
-//var news = ./news.html
-
 
 router.get("/news", function(req, res, next) {
  		//console.log("fick en news request")	
@@ -51,6 +49,18 @@ router.get("/work/:id", function(req, res, next) {
  		});
 });
 
+router.get('/aggregate', function(req, res, next){
+
+	Work.aggregate([{$group: { _id:"$heading", Antal: {$sum:1}}}], function(err, result) {
+
+		if (err) {
+			console.log(err);
+			return;
+		}
+		res.json(result);
+	});
+});
+
 router.post("/inputformnews", function(req, res, next) {
 
 		var news = new News({
@@ -92,7 +102,6 @@ router.delete("/news/:id", function (req, res) {
 	});
 });
 
-
 router.get('/news/:id', function (req, res) {
 	var id = req.params.id;
 	console.log(id);
@@ -100,19 +109,6 @@ router.get('/news/:id', function (req, res) {
 		res.json(doc);
 	});
 });
-
-
-/*
-router.delete( function(req, res, next) {
-	News.remove({
-		_id: req.params.news_id
-	}, function (err, news) {
-		if (err) return res.send(err);
-		res.json({ message: 'Deleted' });
-
-	});
-});
-*/
 
 router.post('/changeformnews/', function(req, res) {
 	var id = req.body.id;
@@ -124,7 +120,6 @@ router.post('/changeformnews/', function(req, res) {
 	}, function (err, doc) {
 		res.redirect("/news");
 	});	
-
 });
 
 
